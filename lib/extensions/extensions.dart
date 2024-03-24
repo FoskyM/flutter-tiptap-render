@@ -1,11 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
+import 'package:tiptap_flutter/types/types.dart';
 
 abstract class TiptapExtension extends StatelessWidget {
   const TiptapExtension({super.key});
+}
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+abstract class TiptapBlockRenderer extends StatelessWidget {
+  final dynamic node;
+  final Next? next;
+
+  const TiptapBlockRenderer(this.node, {super.key, this.next});
 }

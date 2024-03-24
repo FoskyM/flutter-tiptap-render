@@ -1,70 +1,44 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tiptap_flutter/types/blocks.dart';
-import 'package:tiptap_flutter/types/inlines.dart';
-import 'package:tiptap_flutter/types/schema_constraints.dart';
 
-abstract class Node<T> {
-  late T _nodeType;
-  Map<dynamic, dynamic>? data;
+class NodeConfig<Options, Storage> {
+  late String name;
+  Storage? defaultStorage;
 
-  T get nodeType => _nodeType;
+  NodeConfig({required this.name, this.defaultStorage});
 }
 
-abstract class Block<T> extends Node<BLOCKS> {
-  late BLOCKS _nodeType;
-  List<T>? content;
-}
+// abstract class Block<T> extends Node {
+//   List<T>? content;
+// }
+//
+// abstract class Inline<T> extends Node {
+//   List<T>? content;
+// }
 
-abstract class Inline<T> extends Node<INLINES> {
-  late INLINES _nodeType;
-  List<T>? content;
-}
+// abstract class TopLevelBlock extends Node {
+//   late TopLevelBlockEnum _nodeType;
+// }
 
-abstract class TopLevelBlock extends Node<TopLevelBlockEnum> {
-  late TopLevelBlockEnum _nodeType;
-}
-
-class DocumentNode extends Node<BLOCKS> {
-  final BLOCKS _nodeType;
-  final List<dynamic> content;
-
-  DocumentNode({
-    required this.content,
-    required String nodeType,
-  }) : _nodeType = BLOCKS.fromValue(nodeType) ?? BLOCKS.DOCUMENT {
-    this.data = data;
-  }
-
-  static DocumentNode? fromJson(dynamic richTextJson) {
-    if (richTextJson == null) {
-      return null;
-    }
-    return DocumentNode(
-      content: richTextJson['content'],
-      nodeType: richTextJson['type'],
-    );
-  }
-}
-
-class TextNode extends Node<String> {
+class TextNode {
   final String _nodeType;
   final String value;
-  final List<Mark> marks;
+  final List<MarkOld> marks;
 
   TextNode(dynamic node)
       : value = node['text'] ?? '',
         _nodeType = node['type'] ?? '',
         marks = (node['marks'] as List?)
-                ?.map((mark) => Mark(mark['type'], mark['attrs']))
+                ?.map((mark) => MarkOld(mark['type'], mark['attrs']))
                 .toList() ??
-            <Mark>[];
+            <MarkOld>[];
 }
 
-class Mark {
+class MarkOld {
   final String type;
   final dynamic attrs;
 
-  Mark(this.type, this.attrs);
+  MarkOld(this.type, this.attrs);
 }
 
 // Helper types for Rich Text Rendering

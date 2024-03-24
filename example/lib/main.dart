@@ -23,7 +23,17 @@ class MyApp extends StatelessWidget {
               radius: const Radius.circular(8.0),
               child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Tiptap(TiptapData.jsonData)),
+                  child: TiptapRenderer(TiptapData.jsonData, extensions: [
+                    DocumentExtension,
+                    ParagraphExtension,
+                    HeadingExtension,
+                    TextExtension,
+                    ItalicExtension,
+                    BoldExtension,
+                    UnderlineExtension,
+                    LinkExtension,
+                    ImageExtension,
+                  ])),
             )),
             const Padding(
               padding: EdgeInsets.all(8.0),

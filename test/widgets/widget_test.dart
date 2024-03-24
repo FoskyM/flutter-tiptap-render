@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tiptap_flutter/extensions/horizontal_rule.dart';
 import 'package:tiptap_flutter/tiptap_flutter.dart';
 import 'package:tiptap_flutter/types/inlines.dart';
 import 'package:tiptap_flutter/types/types.dart';
-import 'package:tiptap_flutter/widgets/hr.dart';
 
 import 'sample_json.dart';
 
@@ -21,7 +21,7 @@ void main() {
 
   Widget _buildWidget(String json) {
     return MaterialApp(
-      home: Tiptap(jsonDecode(json)),
+      home: TiptapRenderer(jsonDecode(json)),
     );
   }
 
@@ -140,7 +140,7 @@ void main() {
     await tester.pumpWidget(_buildWidget(hrJson));
 
     expect(find.text('hello world'), findsOneWidget);
-    expect(find.byType(Hr), findsOneWidget);
+    expect(find.byType(HorizontalRuleWidget), findsOneWidget);
   });
 
   testWidgets('should display headings', (WidgetTester tester) async {
