@@ -15,7 +15,7 @@ class ParagraphWidget extends TiptapBlockRenderer {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(bottom: 8, top: 8),
-        child: SelectableText.rich(
+        child: Text.rich(
           TextSpan(
             children: next?.call(node['content']),
           ),

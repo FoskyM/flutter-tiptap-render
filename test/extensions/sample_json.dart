@@ -254,7 +254,7 @@ const String hrJson = '''{
               "text": ""
             }
           ],
-          "type": "hr"
+          "type": "horizontalRule"
         },
         {
           "content": [
@@ -379,26 +379,6 @@ const String hyperlinkJson = '''{
       ],
       "type": "doc"
     }''';
-
-const String embeddedEntryJson = '''{
-    "content": [
-      {
-        "type": "embedded-entry-block",
-        "content": [],
-        "data": {
-          "target": {
-            "sys": {
-              "id": "999888",
-              "type": "Link",
-              "linkType": "Entry"
-            }
-          }
-        }
-      }
-    ],
-    "type": "doc"
-  }
-  ''';
 
 const String quoteJson = '''{
     "content": [

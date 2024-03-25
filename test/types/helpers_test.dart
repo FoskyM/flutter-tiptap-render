@@ -30,16 +30,6 @@ void main() {
     expect(Helpers.isBlock(hyperlinkNode), isFalse);
   });
 
-  test('should check if node is top level block', () {
-    expect(Helpers.isTopLevelBlock(inlineNode), isFalse);
-    expect(Helpers.isTopLevelBlock(blockNode), isTrue);
-    expect(Helpers.isTopLevelBlock(topLevelBlocNode), isTrue);
-    expect(Helpers.isTopLevelBlock(paragraphNode), isTrue);
-    expect(Helpers.isTopLevelBlock(headerNode), isTrue);
-    expect(Helpers.isTopLevelBlock(textNode), isFalse);
-    expect(Helpers.isTopLevelBlock(hyperlinkNode), isFalse);
-  });
-
   test('should check if node is paragraph', () {
     expect(Helpers.isParagraph(inlineNode), isFalse);
     expect(Helpers.isParagraph(blockNode), isFalse);

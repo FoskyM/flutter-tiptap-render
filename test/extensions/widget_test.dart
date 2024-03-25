@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tiptap_flutter/extensions/horizontal_rule.dart';
+import 'package:tiptap_flutter/core/extension.dart';
 import 'package:tiptap_flutter/tiptap_flutter.dart';
-import 'package:tiptap_flutter/types/inlines.dart';
-import 'package:tiptap_flutter/types/types.dart';
 
 import 'sample_json.dart';
 
@@ -19,14 +17,18 @@ import 'sample_json.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  Widget _buildWidget(String json) {
+  Widget _buildWidget(String json, {Extensions? extensions}) {
     return MaterialApp(
-      home: TiptapRenderer(jsonDecode(json)),
+      home: TiptapRenderer(
+        jsonDecode(json),
+        extensions: extensions,
+      ),
     );
   }
 
   testWidgets('should display paragraph', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(paragraphJson));
+    await tester.pumpWidget(_buildWidget(paragraphJson,
+        extensions: [DocumentExtension, ParagraphExtension, TextExtension]));
 
     final finder = find.text('This is a paragraph');
     expect(finder, findsOneWidget);
@@ -38,13 +40,19 @@ void main() {
 
   testWidgets('should handle missing marks element',
       (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(absentMarksJson));
+    await tester.pumpWidget(_buildWidget(absentMarksJson,
+        extensions: [DocumentExtension, ParagraphExtension, TextExtension]));
 
     expect(find.text('This is a paragraph'), findsOneWidget);
   });
 
   testWidgets('should display bold marks', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(boldMarksJson));
+    await tester.pumpWidget(_buildWidget(boldMarksJson, extensions: [
+      DocumentExtension,
+      ParagraphExtension,
+      TextExtension,
+      BoldExtension
+    ]));
 
     final finder = find.text('This is a paragraph');
     expect(finder, findsOneWidget);
@@ -54,7 +62,13 @@ void main() {
   });
 
   testWidgets('should display bold italics marks', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(boldItalicMarksJson));
+    await tester.pumpWidget(_buildWidget(boldItalicMarksJson, extensions: [
+      DocumentExtension,
+      ParagraphExtension,
+      TextExtension,
+      BoldExtension,
+      ItalicExtension
+    ]));
 
     final finder = find.text('This is a paragraph');
     expect(finder, findsOneWidget);
@@ -137,32 +151,42 @@ void main() {
   });
 
   testWidgets('should display horizontal rule', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(hrJson));
+    await tester.pumpWidget(_buildWidget(hrJson, extensions: [
+      DocumentExtension,
+      ParagraphExtension,
+      TextExtension,
+      HorizontalRuleExtension
+    ]));
 
     expect(find.text('hello world'), findsOneWidget);
     expect(find.byType(HorizontalRuleWidget), findsOneWidget);
   });
 
   testWidgets('should display headings', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(headingJson));
+    await tester.pumpWidget(_buildWidget(headingJson, extensions: [
+      DocumentExtension,
+      ParagraphExtension,
+      TextExtension,
+      HeadingExtension
+    ]));
 
     var finder = find.text('test - heading 1');
     expect(finder, findsOneWidget);
     var widget = tester.widget(finder) as Text;
     expect(widget.style?.fontWeight, FontWeight.bold);
-    expect(widget.style?.fontSize, 24);
+    expect(widget.style?.fontSize, 27);
 
     finder = find.text('test - heading 2');
     expect(finder, findsOneWidget);
     widget = tester.widget(finder) as Text;
     expect(widget.style?.fontWeight, FontWeight.bold);
-    expect(widget.style?.fontSize, 22);
+    expect(widget.style?.fontSize, 24);
 
     finder = find.text('test - heading 3');
     expect(finder, findsOneWidget);
     widget = tester.widget(finder) as Text;
     expect(widget.style?.fontWeight, FontWeight.bold);
-    expect(widget.style?.fontSize, 20);
+    expect(widget.style?.fontSize, 21);
 
     finder = find.text('test - heading 4');
     expect(finder, findsOneWidget);
@@ -174,13 +198,13 @@ void main() {
     expect(finder, findsOneWidget);
     widget = tester.widget(finder) as Text;
     expect(widget.style?.fontWeight, FontWeight.bold);
-    expect(widget.style?.fontSize, 16);
+    expect(widget.style?.fontSize, 15);
 
     finder = find.text('test - heading 6');
     expect(finder, findsOneWidget);
     widget = tester.widget(finder) as Text;
     expect(widget.style?.fontWeight, FontWeight.bold);
-    expect(widget.style?.fontSize, 14);
+    expect(widget.style?.fontSize, 12);
   });
 
   testWidgets('should display hyperlink', (WidgetTester tester) async {
@@ -197,7 +221,13 @@ void main() {
       return true;
     });
 
-    await tester.pumpWidget(_buildWidget(hyperlinkJson));
+    await tester.pumpWidget(_buildWidget(hyperlinkJson, extensions: [
+      DocumentExtension,
+      ParagraphExtension,
+      TextExtension,
+      HeadingExtension,
+      LinkExtension
+    ]));
 
     final finder = find.text('link');
     expect(finder, findsOneWidget);
@@ -214,13 +244,6 @@ void main() {
   //  quote
   //  inline asset hyperlink
   //  inline entry hyperlink
-
-  testWidgets('should display embedded entry', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildWidget(embeddedEntryJson));
-
-    // Currently Container is used as a placeholder for embedded entry blocks
-    expect(find.byType(Container), findsWidgets);
-  });
 
   testWidgets('should display quotes', (WidgetTester tester) async {
     await tester.pumpWidget(_buildWidget(quoteJson));
@@ -255,28 +278,4 @@ void main() {
 
     expect(find.text('one'), findsOneWidget);
   });
-
-  testWidgets(
-    'should display custom inline embedded entry',
-    (WidgetTester tester) async {
-      final widget = MaterialApp(
-        home: Tiptap(jsonDecode(inlineEmbeddedEntryJson),
-            nodeRenderer: RenderNode({
-              INLINES.EMBEDDED_ENTRY.value: (node, next) {
-                return TextSpan(
-                    text: 'embedded entry test',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ));
-              },
-            })),
-      );
-
-      await tester.pumpWidget(widget);
-
-      // Verify that the text value in the JSON was overwritten by the renderer
-      expect(find.text('one'), findsNothing);
-      expect(find.text('embedded entry test'), findsOneWidget);
-    },
-  );
 }

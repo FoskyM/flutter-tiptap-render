@@ -3,9 +3,8 @@ import 'package:tiptap_flutter/core/node.dart';
 import 'package:tiptap_flutter/extensions/extensions.dart';
 
 var HorizontalRuleExtension = Node(
-    name: "paragraph",
-    priority: 1000,
-    content: "inline*",
+    name: "horizontalRule",
+    group: "block",
     renderer: (node, {next}) => HorizontalRuleWidget(node, next: next));
 
 class HorizontalRuleWidget extends TiptapBlockRenderer {
