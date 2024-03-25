@@ -17,10 +17,9 @@ class DocumentWidget extends TiptapBlockRenderer {
       var documentNode = DocumentNodeOld.fromJson(node);
       var content = (documentNode?.content ?? []).toList();
 
-      return SingleChildScrollView(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: content.map((node) => next!(node) as Widget).toList()));
+      return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: content.map((node) => next!(node) as Widget).toList());
     }
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
