@@ -1,39 +1,105 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Tiptap Flutter
 
 ## Features
+- Parse JSON data to Flutter widgets
+- Customizable extensions
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### Built in extensions
+- DocumentExtension
+- ParagraphExtension
+- HeadingExtension
+- TextExtension
+- BoldExtension
+- ItalicExtension
+- UnderlineExtension
+- LinkExtension
+- ImageExtension
 
 ## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+TODO
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Full example in the `/example` folder.
 
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:tiptap_flutter/tiptap_flutter.dart';
+
+void main() => runApp(const MyApp());
+
+const jsonData = '''{
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": {
+        "level": 1
+      },
+      "content": [
+        {
+          "marks": [],
+          "text": "This is a header",
+          "type": "text"
+        },
+      ]
+    },
+    {
+      "content": [
+        {
+          "marks": [],
+          "text": "This is a paragraph with ",
+          "type": "text"
+        },
+        {
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ],
+          "text": "important content",
+          "type": "text"
+        }
+      ],
+      "type": "paragraph"
+    }
+  ]
+ }''';
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tiptap Parser Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Tiptap Parser Demo'),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+                child: Scrollbar(
+                  radius: const Radius.circular(8.0),
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: TiptapRenderer(jsonData, extensions: [
+                        DocumentExtension,
+                        ParagraphExtension,
+                        HeadingExtension,
+                        TextExtension,
+                        BoldExtension,
+                      ])),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
 
 ## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+TODO
