@@ -16,7 +16,14 @@
 - ImageExtension
 
 ## Getting started
-TODO
+Add the package to your `pubspec.yaml` file.
+```yaml
+dependencies:
+  tiptap_flutter:
+    git:
+      url: https://github.com/fvarano/tiptap-flutter.git
+      ref: main # branch name
+```
 
 ## Usage
 Full example in the `/example` folder.
