@@ -117,6 +117,18 @@ class TiptapRenderer extends StatelessWidget {
     return TextSpan(text: nodeValue);
   }
 
+  static String text(dynamic schema) {
+    if (schema['text'] != null) {
+      return schema['text'];
+    }
+
+    List<dynamic> content = schema['content'];
+
+    return content
+        .map((e) => text(e))
+        .join(schema['type'] == "doc" ? "\n" : "");
+  }
+
   @override
   Widget build(BuildContext context) {
     if (schema != null && schema['content'] != null) {
