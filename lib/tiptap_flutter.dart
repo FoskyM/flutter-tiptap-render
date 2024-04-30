@@ -122,7 +122,11 @@ class TiptapRenderer extends StatelessWidget {
       return schema['text'];
     }
 
-    List<dynamic> content = schema['content'];
+    List<dynamic>? content = schema['content'];
+
+    if (content == null) {
+      return "";
+    }
 
     return content
         .map((e) => text(e))
