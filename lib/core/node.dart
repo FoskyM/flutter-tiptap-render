@@ -1,7 +1,7 @@
 import 'package:tiptap_flutter/core/extension.dart';
 
 class Node<Options, Storage> extends AnyExtension {
-  const Node({
+  Node({
     required super.name,
     required super.renderer,
     super.content,

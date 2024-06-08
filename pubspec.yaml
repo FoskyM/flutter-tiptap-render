@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  basic_utils: ^5.7.0
   collection: ^1.16.0
   html_unescape: ^2.0.0
   url_launcher: ^6.1.5

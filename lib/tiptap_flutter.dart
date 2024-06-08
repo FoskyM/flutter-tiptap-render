@@ -37,7 +37,7 @@ class TiptapRenderer extends StatelessWidget {
   /// any custom logic needed to accommodate different node types
   Widget nodeToWidget(dynamic node) {
     AnyExtension? chosen = extensions
-        .firstWhereOrNull((extension) => extension.name == node['type']);
+        .firstWhereOrNull((extension) => extension.nodeType == node['type']);
 
     if (chosen == null) {
       if (kDebugMode) print("Unhandled node type: ${node['type']}");
@@ -79,7 +79,7 @@ class TiptapRenderer extends StatelessWidget {
           .map((mark) => (
                 mark: mark,
                 markHandler: extensions.firstWhereOrNull(
-                    (extension) => extension.name == mark.type)
+                    (extension) => extension.nodeType == mark.type)
               ))
           .where((item) {
         if (item.markHandler == null) {

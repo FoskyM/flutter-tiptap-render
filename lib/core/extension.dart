@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:tiptap_flutter/extensions/extensions.dart';
 import 'package:tiptap_flutter/types/types.dart';
+import 'package:basic_utils/basic_utils.dart';
 
 typedef NodeRenderer = TiptapBlockRenderer Function(dynamic node,
     {dynamic next});
@@ -24,10 +25,9 @@ class AnyExtension<Options, Storage> {
   final NodeRenderer? renderer;
   final StyleAdder? addStyle;
   final CommandAdder? addCommands;
+  String nodeType = "";
 
-  String get nodeType => name;
-
-  const AnyExtension({
+  AnyExtension({
     required this.name,
     this.renderer,
     this.content,
@@ -41,7 +41,9 @@ class AnyExtension<Options, Storage> {
     this.data,
     this.addStyle,
     this.addCommands,
-  });
+  }){
+    this.nodeType = StringUtils.camelCaseToLowerUnderscore(this.name);
+  }
 }
 
 typedef Extension = AnyExtension;

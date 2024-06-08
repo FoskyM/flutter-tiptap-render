@@ -525,3 +525,43 @@ const String inlineEmbeddedEntryJson = '''{
     ],
     "type": "doc"
   }''';
+
+
+const bulletListJSON  = '''{
+  "type": "doc",
+  "content": [
+    {
+      "type": "bullet_list",
+      "content": [
+        {
+          "type": "list_item",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Item 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Item 2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}''';

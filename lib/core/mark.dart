@@ -1,7 +1,7 @@
 import 'package:tiptap_flutter/core/extension.dart';
 
 class Mark extends AnyExtension {
-  const Mark({
+  Mark({
     required super.name,
     super.renderer,
     super.content,

@@ -199,6 +199,41 @@ class TiptapData {
         }
       ],
       "type": "paragraph"
+    },
+    {
+      "type": "bullet_list",
+      "content": [
+        {
+          "type": "list_item",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "marks": [],
+                  "text": "Item 1",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list_item",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "marks": [],
+                  "text": "Item 2",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
  }''';
