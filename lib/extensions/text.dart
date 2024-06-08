@@ -12,6 +12,6 @@ class TextWidget extends TiptapBlockRenderer {
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(next?.call(node["text"]));
+    return Text.rich(next?.call(node["text"]) ?? const TextSpan(text: ""));
   }
 }
