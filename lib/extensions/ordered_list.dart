@@ -6,7 +6,8 @@ var OrderedListExtension = Node(
     name: 'orderedList',
     group: "block list",
     content: "paragraph block*",
-    renderer: (node, {next}) => OrderedListWidget(node, next: next));
+    renderer: (node, {next, attributes}) =>
+        WidgetSpan(child: OrderedListWidget(node, next: next)));
 
 class OrderedListWidget extends TiptapBlockRenderer {
   const OrderedListWidget(super.node, {super.key, super.next});
@@ -29,7 +30,7 @@ class OrderedListWidget extends TiptapBlockRenderer {
                         margin: const EdgeInsets.only(right: 10.0),
                         child: Text('${entry.key + 1}.'),
                       ),
-                      (next?.call(entry.value) ?? const SizedBox() as Widget)
+                      Text.rich((next?.call(entry.value) ?? const TextSpan()))
                     ].toList()))
                 .toList()));
   }

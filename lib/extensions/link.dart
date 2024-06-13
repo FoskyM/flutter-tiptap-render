@@ -5,7 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 var LinkExtension = Mark(
     name: "link",
     addStyle: (node, mark) => const TextStyle(
-        color: Colors.blue, decoration: TextDecoration.underline),
+        color: Colors.blue,
+        decoration: TextDecoration.underline,
+        decorationColor: Colors.blue),
     addCommands: (node, mark) => {
           "onTap": () async {
             // NOTE: Defaults to Url_Launcher, but component can be overridden

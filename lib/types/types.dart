@@ -42,7 +42,7 @@ class MarkOld {
 }
 
 // Helper types for Rich Text Rendering
-typedef Next = dynamic Function(dynamic nodes);
+typedef Next = InlineSpan? Function(dynamic nodes);
 typedef NodeRenderer = dynamic Function(dynamic node, Next next);
 
 class RenderNode<T> {

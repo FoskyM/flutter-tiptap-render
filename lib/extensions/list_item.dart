@@ -6,7 +6,8 @@ var ListItemExtension = Node(
     name: 'listItem',
     group: "block list",
     content: "paragraph block*",
-    renderer: (node, {next}) => ListItemWidget(node, next: next));
+    renderer: (node, {next, attributes}) =>
+        WidgetSpan(child: ListItemWidget(node, next: next)));
 
 class ListItemWidget extends TiptapBlockRenderer {
   const ListItemWidget(super.node, {super.key, super.next});
@@ -20,8 +21,9 @@ class ListItemWidget extends TiptapBlockRenderer {
         ),
         child: Column(
           children: node['content']
-              .map<Widget>((child) => next?.call(child) as Widget)
+              .map<InlineSpan?>((child) => next?.call(child))
               .where((element) => element != null)
+              .map<Widget>((element) => Text.rich(element as InlineSpan))
               .toList(),
         ));
   }

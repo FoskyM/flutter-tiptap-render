@@ -6,7 +6,8 @@ var BulletListExtension = Node(
     name: 'bulletList',
     group: "block list",
     content: "block list",
-    renderer: (node, {next}) => BulletListWidget(node, next: next));
+    renderer: (node, {next, attributes}) =>
+        WidgetSpan(child: BulletListWidget(node, next: next)));
 
 class BulletListWidget extends TiptapBlockRenderer {
   const BulletListWidget(super.node, {super.key, super.next});
@@ -32,7 +33,7 @@ class BulletListWidget extends TiptapBlockRenderer {
                           ),
                         ),
                       ),
-                      (next?.call(child) ?? const SizedBox() as Widget)
+                      Text.rich(next?.call(child) ?? const TextSpan())
                     ].toList()))
                 .toList()));
   }

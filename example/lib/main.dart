@@ -1,6 +1,7 @@
 import 'package:example/tiptap_data.dart';
 import 'package:flutter/material.dart';
 import 'package:tiptap_flutter/extensions/bullet_list.dart';
+import 'package:tiptap_flutter/extensions/hard_break.dart';
 import 'package:tiptap_flutter/extensions/list_item.dart';
 import 'package:tiptap_flutter/extensions/ordered_list.dart';
 import 'package:tiptap_flutter/tiptap_flutter.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
                     BulletListExtension,
                     OrderedListExtension,
                     ListItemExtension,
+                    HardBreakExtension,
                   ])),
             )),
             const Padding(

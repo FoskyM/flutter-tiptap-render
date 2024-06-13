@@ -5,7 +5,8 @@ import 'package:tiptap_flutter/extensions/extensions.dart';
 var DocumentExtension = Node(
     name: "doc",
     content: "block+",
-    renderer: (node, {next}) => DocumentWidget(node, next: next),
+    renderer: ((node, {next, attributes}) =>
+        WidgetSpan(child: DocumentWidget(node, next: next))),
     data: {"topNode": true});
 
 class DocumentWidget extends TiptapBlockRenderer {
@@ -19,7 +20,11 @@ class DocumentWidget extends TiptapBlockRenderer {
 
       return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: content.map((node) => next!(node) as Widget).toList());
+          children: content
+              .map((node) => next!(node))
+              .where((element) => element != null)
+              .map((element) => Text.rich(element as InlineSpan))
+              .toList());
     }
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
