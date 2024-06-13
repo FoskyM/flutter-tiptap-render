@@ -41,7 +41,7 @@ class TiptapRenderer extends StatelessWidget {
 
     if (node['marks'] != null && node['marks'].isNotEmpty) {
       var markExtensions = node['marks'].map((item) {
-        var mark = MarkOld(item['type'], item['attrs']);
+        var mark = MarkInstance(item['type'], item['attrs']);
         return (
           mark: mark,
           markHandler: extensions

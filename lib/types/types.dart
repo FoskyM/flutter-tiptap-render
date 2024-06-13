@@ -8,37 +8,11 @@ class NodeConfig<Options, Storage> {
   NodeConfig({required this.name, this.defaultStorage});
 }
 
-// abstract class Block<T> extends Node {
-//   List<T>? content;
-// }
-//
-// abstract class Inline<T> extends Node {
-//   List<T>? content;
-// }
-
-// abstract class TopLevelBlock extends Node {
-//   late TopLevelBlockEnum _nodeType;
-// }
-
-class TextNode {
-  final String _nodeType;
-  final String value;
-  final List<MarkOld> marks;
-
-  TextNode(dynamic node)
-      : value = node['text'] ?? '',
-        _nodeType = node['type'] ?? '',
-        marks = (node['marks'] as List?)
-                ?.map((mark) => MarkOld(mark['type'], mark['attrs']))
-                .toList() ??
-            <MarkOld>[];
-}
-
-class MarkOld {
+class MarkInstance {
   final String type;
   final dynamic attrs;
 
-  MarkOld(this.type, this.attrs);
+  MarkInstance(this.type, this.attrs);
 }
 
 // Helper types for Rich Text Rendering

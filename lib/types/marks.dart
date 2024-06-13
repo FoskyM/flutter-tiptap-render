@@ -53,12 +53,12 @@ class MARKS {
   });
 
   static TextStyle getMarksTextStyles(
-          List<MarkOld> marks, Map<dynamic, TextStyle> renderMark) =>
+          List<MarkInstance> marks, Map<dynamic, TextStyle> renderMark) =>
       marks.fold(const TextStyle(),
           (previousValue, mark) => previousValue.merge(renderMark[mark.type]));
 
   static GestureRecognizer? getMarksTextRecognizers(
-      List<MarkOld> marks, Map<dynamic, TextStyle> renderMark) {
+      List<MarkInstance> marks, Map<dynamic, TextStyle> renderMark) {
     var link = marks.firstWhereOrNull((element) => element.type == "link");
 
     return link == null
