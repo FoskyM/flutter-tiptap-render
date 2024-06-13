@@ -5,9 +5,7 @@ var TextExtension = Node(
     name: "text",
     group: "inline",
     inline: true,
-    renderer: (node, {next, attributes}) {
-      return TextSpan(
-          text: node["text"],
-          style: attributes?.style,
-          recognizer: attributes?.recognizer);
-    });
+    renderer: (node, {next, attributes}) => TextSpan(
+        text: (node["text"]),
+        style: attributes?.style,
+        recognizer: attributes?.recognizer));
