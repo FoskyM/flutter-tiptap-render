@@ -50,7 +50,7 @@ class TiptapRenderer extends StatelessWidget {
       }).where((item) {
         if (item.markHandler == null) {
           if (kDebugMode) {
-            print("Unhandled mark: ${item.mark['type']}");
+            print("Unhandled mark: ${item.mark.type}");
           }
         }
         return item.markHandler != null;
