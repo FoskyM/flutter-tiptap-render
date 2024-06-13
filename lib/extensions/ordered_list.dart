@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiptap_flutter/core/node.dart';
 import 'package:tiptap_flutter/extensions/extensions.dart';
@@ -15,22 +16,22 @@ class OrderedListWidget extends TiptapBlockRenderer {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(
-          top: 10.0,
-          bottom: 10.0,
-          left: 5.0,
-        ),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
             children: node['content']
                 .asMap()
                 .entries
                 .map<Widget>((entry) => Row(
-                        children: <Widget>[
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(right: 10.0),
+                        margin: const EdgeInsets.only(
+                            right: 10.0, top: 8, bottom: 8),
                         child: Text('${entry.key + 1}.'),
                       ),
-                      Text.rich((next?.call(entry.value) ?? const TextSpan()))
+                      Expanded(
+                          child: Text.rich(
+                              (next?.call(entry.value) ?? const TextSpan())))
                     ].toList()))
                 .toList()));
   }

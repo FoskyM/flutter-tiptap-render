@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiptap_flutter/core/node.dart';
 import 'package:tiptap_flutter/extensions/extensions.dart';
@@ -14,17 +15,10 @@ class ListItemWidget extends TiptapBlockRenderer {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 5.0,
-          horizontal: 0.0,
-        ),
-        child: Column(
-          children: node['content']
-              .map<InlineSpan?>((child) => next?.call(child))
-              .where((element) => element != null)
-              .map<Widget>((element) => Text.rich(element as InlineSpan))
-              .toList(),
-        ));
+    return Text.rich(TextSpan(
+      children: node['content']
+          .map<InlineSpan>((child) => next?.call(child) ?? const TextSpan())
+          .toList(),
+    ));
   }
 }

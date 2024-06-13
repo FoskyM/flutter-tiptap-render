@@ -15,17 +15,15 @@ class BulletListWidget extends TiptapBlockRenderer {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(
-          top: 10.0,
-          bottom: 10.0,
-          left: 5.0,
-        ),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
             children: node['content']
                 .map<Widget>((child) => Row(
-                        children: <Widget>[
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(right: 10.0),
+                        margin: const EdgeInsets.only(
+                            right: 10.0, top: 3.0, bottom: 3.0),
                         child: const Text(
                           '\u2022',
                           style: TextStyle(
@@ -33,7 +31,9 @@ class BulletListWidget extends TiptapBlockRenderer {
                           ),
                         ),
                       ),
-                      Text.rich(next?.call(child) ?? const TextSpan())
+                      Expanded(
+                          child:
+                              Text.rich(next?.call(child) ?? const TextSpan()))
                     ].toList()))
                 .toList()));
   }
