@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             Expanded(
                 child: Scrollbar(
               radius: const Radius.circular(8.0),
-              child: Padding(
+              child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: TiptapRenderer(TiptapData.jsonData, extensions: [
                     DocumentExtension,

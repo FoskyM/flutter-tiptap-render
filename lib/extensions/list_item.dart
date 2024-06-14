@@ -16,7 +16,7 @@ class ListItemWidget extends TiptapBlockRenderer {
   @override
   Widget build(BuildContext context) {
     return Text.rich(TextSpan(
-      children: node['content']
+      children: (node['content'] ?? [])
           .map<InlineSpan>((child) => next?.call(child) ?? const TextSpan())
           .toList(),
     ));

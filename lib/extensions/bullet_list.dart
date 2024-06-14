@@ -17,7 +17,7 @@ class BulletListWidget extends TiptapBlockRenderer {
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
-            children: node['content']
+            children: (node['content'] ?? [])
                 .map<Widget>((child) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[

@@ -18,9 +18,7 @@ class OrderedListWidget extends TiptapBlockRenderer {
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
-            children: node['content']
-                .asMap()
-                .entries
+            children: (node['content'] ?? [])
                 .map<Widget>((entry) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[

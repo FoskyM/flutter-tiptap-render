@@ -35,8 +35,8 @@ class HeadingWidget extends TiptapBlockRenderer {
             top: (defaultHeadingSizes[level]! / 2.0), bottom: 1),
         child: Text.rich(
           TextSpan(
-            children: (node['content'].map<InlineSpan>((node) =>
-                next?.call(node) as InlineSpan? ?? const TextSpan())).toList(),
+            children: ((node['content'] ?? []).map<InlineSpan>(
+                (node) => next?.call(node) ?? const TextSpan())).toList(),
           ),
           style: TextStyle(
             fontWeight: FontWeight.bold,
