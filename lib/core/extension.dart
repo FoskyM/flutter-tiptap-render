@@ -9,6 +9,9 @@ typedef StyleAdder = TextStyle Function(dynamic node, MarkInstance mark);
 typedef CommandAdder = Map<String, Function> Function(
     dynamic node, dynamic mark);
 
+typedef MarkWrapper = InlineSpan Function(
+    InlineSpan inner, dynamic node, MarkInstance mark);
+
 class AnyExtension<Options, Storage> {
   final String type = "node";
   final String name;
@@ -26,25 +29,27 @@ class AnyExtension<Options, Storage> {
   final NodeRenderer? renderer;
   final StyleAdder? addStyle;
   final CommandAdder? addCommands;
+  final MarkWrapper? wrapSpan;
+
   String nodeType = "";
   final TextStyle style = TextStyle();
 
-  AnyExtension({
-    required this.name,
-    this.renderer,
-    this.content,
-    this.group,
-    this.inline,
-    this.parent,
-    this.child,
-    this.options,
-    this.storage,
-    this.priority,
-    this.defaultOptions,
-    this.data,
-    this.addStyle,
-    this.addCommands,
-  }) {
+  AnyExtension(
+      {required this.name,
+      this.renderer,
+      this.content,
+      this.group,
+      this.inline,
+      this.parent,
+      this.child,
+      this.options,
+      this.storage,
+      this.priority,
+      this.defaultOptions,
+      this.data,
+      this.addStyle,
+      this.addCommands,
+      this.wrapSpan}) {
     this.nodeType = StringUtils.camelCaseToLowerUnderscore(this.name);
   }
 

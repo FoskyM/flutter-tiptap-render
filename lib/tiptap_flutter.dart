@@ -23,7 +23,8 @@ class TiptapRenderer extends StatelessWidget {
     this.extensions = ExtensionsManager.sort(newExtensions);
     if (kDebugMode) {
       this.extensions.toList().forEach((item) {
-        print("Registered extension, type: ${item.nodeType}, name: ${item.name}");
+        print(
+            "Registered extension, type: ${item.nodeType}, name: ${item.name}");
       });
     }
   }
@@ -31,8 +32,8 @@ class TiptapRenderer extends StatelessWidget {
   /// nodeToWidget handles converting a node into a Widget, as well as handling
   /// any custom logic needed to accommodate different node types
   InlineSpan? nodeToWidget(dynamic node) {
-    AnyExtension? chosen = extensions
-        .firstWhereOrNull((extension) => extension.nodeType == node['type'] || extension.name == node['type']);
+    AnyExtension? chosen = extensions.firstWhereOrNull((extension) =>
+        extension.nodeType == node['type'] || extension.name == node['type']);
 
     if (chosen == null) {
       if (kDebugMode) print("Unhandled node type: ${node['type']}");
@@ -41,53 +42,62 @@ class TiptapRenderer extends StatelessWidget {
 
     AnyExtension extension = chosen.extend();
 
-    TextStyle? style;
+    InlineSpan widgetSpan = extension.renderer!(
+      node,
+      next: nodeToWidget,
+      attributes: Attributes(),
+    );
+
+    if (node['marks'] == null || node['marks'].isEmpty) return widgetSpan;
+
+    var markExtensions = node['marks'].map((item) {
+      var mark = MarkInstance(item['type'], item['attrs']);
+      var markHandler = extensions.firstWhereOrNull(
+        (extension) =>
+            extension.nodeType == mark.type || extension.name == mark.type,
+      );
+      return (mark: mark, handler: markHandler);
+    }).where((item) {
+      if (item.handler == null) {
+        if (kDebugMode) print("Unhandled mark: ${item.mark.type}");
+      }
+      return item.handler != null;
+    }).toList();
+
+    final markStyles = markExtensions
+        .where((item) => item.handler!.addStyle != null)
+        .map((item) => item.handler!.addStyle!(node, item.mark));
+    final mergedStyle = markStyles.fold(
+        const TextStyle(), (previousValue, mark) => previousValue?.merge(mark));
+
+    final markActions = markExtensions
+        .where((item) => item.handler!.addCommands != null)
+        .map((item) => item.handler!.addCommands!(node, item.mark));
     GestureRecognizer? recognizer;
-
-    if (node['marks'] != null && node['marks'].isNotEmpty) {
-      var markExtensions = node['marks'].map((item) {
-        var mark = MarkInstance(item['type'], item['attrs']);
-        return (
-          mark: mark,
-          markHandler: extensions
-              .firstWhereOrNull((extension) => extension.nodeType == mark.type)
-        );
-      }).where((item) {
-        if (item.markHandler == null) {
-          if (kDebugMode) {
-            print("Unhandled mark: ${item.mark.type}");
+    if (markActions.isNotEmpty) {
+      recognizer = TapGestureRecognizer()
+        ..onTap = () {
+          for (var action in markActions) {
+            action["onTap"]?.call();
           }
-        }
-        return item.markHandler != null;
-      });
-
-      var markRenderers =
-          markExtensions.where((item) => item.markHandler.addStyle != null);
-      var actionRenderers =
-          markExtensions.where((item) => item.markHandler.addCommands != null);
-      var markStyles = markRenderers
-          .map((item) => item.markHandler.addStyle!.call(node, item.mark));
-      var markActions = actionRenderers
-          .map((item) => item.markHandler.addCommands!.call(node, item.mark));
-
-      style = markStyles.fold(const TextStyle(),
-          (previousValue, mark) => previousValue?.merge(mark));
-
-      recognizer = markActions.isNotEmpty
-          ? (TapGestureRecognizer()
-            ..onTap = () async {
-              for (var action in markActions) {
-                if (action != null) {
-                  action["onTap"]?.call();
-                }
-              }
-            })
-          : null;
+        };
     }
 
-    return extension.renderer!(node,
-        next: nodeToWidget,
-        attributes: Attributes(style: style, recognizer: recognizer));
+    widgetSpan = TextSpan(
+      children: [widgetSpan],
+      style: mergedStyle,
+      recognizer: recognizer,
+    );
+
+    for (var item in markExtensions.reversed) {
+      var handler = item.handler!;
+      var mark = item.mark;
+      if (handler.wrapSpan != null) {
+        widgetSpan = handler.wrapSpan!(widgetSpan, node, mark);
+      }
+    }
+
+    return widgetSpan;
   }
 
   static String text(dynamic schema) {
