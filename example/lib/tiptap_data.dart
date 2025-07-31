@@ -3,238 +3,276 @@ import 'dart:convert';
 class TiptapData {
   static final Map<String, dynamic> jsonData = json.decode(stringData);
   static const String stringData = '''{
-  "type": "doc",
-  "content": [
-    {
-      "type": "heading",
-      "attrs": {
-        "level": 1
-      },
-      "content": [
-        {
-          "marks": [],
-          "text": "Testing ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "bold"
-            },
-            {
-              "type": "link",
-              "attrs": {
-                "href": "https://google.com"
-              }
-            }
-          ],
-          "text": "Hyperlink",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "italic"
-            },
-            {
-              "type": "link",
-              "attrs": {
-                "href": "https://google.com"
-              }
-            }
-          ],
-          "text": " in",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "link",
-              "attrs": {
-                "href": "https://google.com"
-              }
-            }
-          ],
-          "text": " header",
-          "type": "text"
-        },
-        {
-          "marks": [],
-          "text": "",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "content": [
-        {
-          "marks": [],
-          "text": "Testing inline links, ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "bold"
-            }
-          ],
-          "text": "so",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "bold"
-            },
-            {
-              "type": "italic"
-            }
-          ],
-          "text": " ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "italic"
-            },
-            {
-              "type": "bold"
-            },
-            {
-              "type": "link",
-              "attrs": {
-                "href": "https://google.com"
-              }
-            }
-          ],
-          "text": "here's ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "italic"
-            },
-            {
-              "type": "link",
-              "attrs": {
-                "href": "https://google.com"
-              }
-            }
-          ],
-          "text": "a ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "link",
-              "attrs": {
-                "href": "https://google.com"
-              }
-            }
-          ],
-          "text": "link",
-          "type": "text"
-        },
-        {
-          "marks": [],
-          "text": " inline",
-          "type": "text"
-        }
-      ],
-      "type": "paragraph"
-    },
-    {
-      "content": [
-        {
-          "marks": [],
-          "text": "telephone: ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "link",
-              "attrs": {
-                "href": "tel:800-555-1212"
-              }
-            }
-          ],
-          "text": "800-555-1212",
-          "type": "text"
-        },
-        {
-          "marks": [],
-          "text": "",
-          "type": "text"
-        }
-      ],
-      "type": "paragraph"
-    },
-    {
-      "content": [
-        {
-          "marks": [],
-          "text": "email: ",
-          "type": "text"
-        },
-        {
-          "marks": [
-            {
-              "type": "link",
-              "attrs": {
-                "href": "mailto:info@example.com"
-              }
-            }
-          ],
-          "text": "info@example.com",
-          "type": "text"
-        },
-        {
-          "marks": [],
-          "text": "",
-          "type": "text"
-        }
-      ],
-      "type": "paragraph"
-    },
-    {
-      "type": "bullet_list",
-      "content": [
-        {
-          "type": "list_item",
-          "content": [
-            {
-              "type": "paragraph",
-              "content": [
+            "type": "doc",
+            "content": [
                 {
-                  "marks": [],
-                  "text": "Item 1",
-                  "type": "text"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "list_item",
-          "content": [
-            {
-              "type": "paragraph",
-              "content": [
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "asdsa",
+                            "type": "text"
+                        }
+                    ]
+                },
                 {
-                  "marks": [],
-                  "text": "Item 2",
-                  "type": "text"
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "asdsad",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "bold"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "sadsadsa",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "italic"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "sadsa",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "underline"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "sadsad",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "strike"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "attrs": {
+                        "level": 1
+                    },
+                    "content": [
+                        {
+                            "text": "sadasda",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "sadasd",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "superscript"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "asdasd",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "subscript"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "asdsada",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "highlight",
+                                    "attrs": {
+                                        "color": "var(--p-primary-500)"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "asdsad",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "code"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "blockquote",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "text": "asdasd",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "orderedList",
+                    "attrs": {
+                        "type": null,
+                        "start": 1
+                    },
+                    "content": [
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "sadsadsa",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "sadsa",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "sadsa",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "bulletList",
+                    "content": [
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "asdsa",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "sad",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "asdsadsa",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "https://tiptap.dev/",
+                            "type": "text",
+                            "marks": [
+                                {
+                                    "type": "link",
+                                    "attrs": {
+                                        "rel": "noopener noreferrer nofollow",
+                                        "href": "https://tiptap.dev/",
+                                        "class": null,
+                                        "target": "_blank"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
- }''';
+            ]
+        }''';
 }
