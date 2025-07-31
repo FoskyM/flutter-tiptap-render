@@ -5,7 +5,7 @@ import 'package:tiptap_flutter/extensions/extensions.dart';
 var DocumentExtension = Node(
     name: "doc",
     content: "block+",
-    renderer: ((node, {next, attributes}) =>
+    renderer: ((node, {next, attributes, extension}) =>
         WidgetSpan(child: DocumentWidget(node, next: next))),
     data: {"topNode": true});
 

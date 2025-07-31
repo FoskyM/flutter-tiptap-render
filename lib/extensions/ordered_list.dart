@@ -7,14 +7,17 @@ var OrderedListExtension = Node(
     name: 'orderedList',
     group: "block list",
     content: "paragraph block*",
-    renderer: (node, {next, attributes}) =>
-        WidgetSpan(child: OrderedListWidget(node, next: next)));
+    renderer: (node, {next, attributes, extension}) => WidgetSpan(
+        child: OrderedListWidget(node, next: next, extension: extension)));
 
 class OrderedListWidget extends TiptapBlockRenderer {
-  const OrderedListWidget(super.node, {super.key, super.next});
+  const OrderedListWidget(super.node, {super.key, super.next, super.extension});
 
   @override
   Widget build(BuildContext context) {
+    var top = extension?.data?["top"] ?? 8;
+    var bottom = extension?.data?["bottom"] ?? 8;
+
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
@@ -25,8 +28,8 @@ class OrderedListWidget extends TiptapBlockRenderer {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(
-                            right: 10.0, top: 8, bottom: 8),
+                        margin: EdgeInsets.only(
+                            right: 10.0, top: top, bottom: bottom),
                         child: Text('${entry.key + 1}.'),
                       ),
                       Expanded(

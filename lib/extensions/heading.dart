@@ -6,17 +6,13 @@ var HeadingExtension = Node(
     name: "heading",
     content: "inline*",
     group: "block",
-    renderer: (node, {next, attributes}) =>
-        WidgetSpan(child: HeadingWidget(node, next: next)));
+    renderer: (node, {next, attributes, extension}) => WidgetSpan(
+        child: HeadingWidget(node, next: next, extension: extension)));
 
 const baseFontSize = 12.0;
 
 class HeadingWidget extends TiptapBlockRenderer {
-  const HeadingWidget(
-    super.node, {
-    super.key,
-    super.next,
-  });
+  const HeadingWidget(super.node, {super.key, super.next, super.extension});
 
   static const defaultHeadingSizes = {
     1: baseFontSize * 2.25,
@@ -30,9 +26,10 @@ class HeadingWidget extends TiptapBlockRenderer {
   @override
   Widget build(BuildContext context) {
     var level = node['attrs']['level'] ?? 1;
+    var top = extension?.data?['top'] ?? (defaultHeadingSizes[level]! / 2.0);
+    var bottom = extension?.data?['bottom'] ?? 1;
     return Container(
-        margin: EdgeInsets.only(
-            top: (defaultHeadingSizes[level]! / 2.0), bottom: 1),
+        margin: EdgeInsets.only(top: top, bottom: bottom),
         child: Text.rich(
           TextSpan(
             children: ((node['content'] ?? []).map<InlineSpan>(

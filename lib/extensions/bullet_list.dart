@@ -6,14 +6,17 @@ var BulletListExtension = Node(
     name: 'bulletList',
     group: "block list",
     content: "block list",
-    renderer: (node, {next, attributes}) =>
-        WidgetSpan(child: BulletListWidget(node, next: next)));
+    renderer: (node, {next, attributes, extension}) => WidgetSpan(
+        child: BulletListWidget(node, next: next, extension: extension)));
 
 class BulletListWidget extends TiptapBlockRenderer {
-  const BulletListWidget(super.node, {super.key, super.next});
+  const BulletListWidget(super.node, {super.key, super.next, super.extension});
 
   @override
   Widget build(BuildContext context) {
+    var top = extension?.data?["top"] ?? 3;
+    var bottom = extension?.data?["bottom"] ?? 3;
+
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
@@ -22,8 +25,8 @@ class BulletListWidget extends TiptapBlockRenderer {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(
-                            right: 10.0, top: 3.0, bottom: 3.0),
+                        margin: EdgeInsets.only(
+                            right: 10.0, top: top, bottom: bottom),
                         child: const Text(
                           '\u2022',
                           style: TextStyle(

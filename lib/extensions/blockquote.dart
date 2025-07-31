@@ -5,7 +5,7 @@ var BlockquoteExtension = Node(
   name: "blockquote",
   group: "block",
   content: "block+",
-  renderer: (node, {next, attributes}) => WidgetSpan(
+  renderer: (node, {next, attributes, extension}) => WidgetSpan(
     child: Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
