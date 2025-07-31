@@ -5,7 +5,7 @@ import 'package:tiptap_flutter/extensions/extensions.dart';
 var HorizontalRuleExtension = Node(
     name: "horizontalRule",
     group: "block",
-    renderer: (node, {next, attributes, extension}) =>
+    renderer: (node, {next, attributes, extension, parentNode}) =>
         WidgetSpan(child: HorizontalRuleWidget(node)));
 
 class HorizontalRuleWidget extends TiptapBlockRenderer {

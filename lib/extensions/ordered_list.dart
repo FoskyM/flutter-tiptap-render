@@ -7,7 +7,7 @@ var OrderedListExtension = Node(
     name: 'orderedList',
     group: "block list",
     content: "paragraph block*",
-    renderer: (node, {next, attributes, extension}) => WidgetSpan(
+    renderer: (node, {next, attributes, extension, parentNode}) => WidgetSpan(
         child: OrderedListWidget(node, next: next, extension: extension)));
 
 class OrderedListWidget extends TiptapBlockRenderer {

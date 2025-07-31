@@ -4,7 +4,7 @@ import 'package:tiptap_flutter/extensions/extensions.dart';
 
 var ImageExtension = Node(
     name: "image",
-    renderer: (node, {next, attributes, extension}) =>
+    renderer: (node, {next, attributes, extension, parentNode}) =>
         WidgetSpan(child: ImageWidget(node)));
 
 class ImageWidget extends TiptapBlockRenderer {

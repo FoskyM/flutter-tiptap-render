@@ -31,7 +31,7 @@ class TiptapRenderer extends StatelessWidget {
 
   /// nodeToWidget handles converting a node into a Widget, as well as handling
   /// any custom logic needed to accommodate different node types
-  InlineSpan? nodeToWidget(dynamic node) {
+  InlineSpan? nodeToWidget(dynamic node, dynamic parentNode) {
     AnyExtension? chosen = extensions.firstWhereOrNull((extension) =>
         extension.nodeType == node['type'] || extension.name == node['type']);
 
@@ -42,11 +42,11 @@ class TiptapRenderer extends StatelessWidget {
 
     AnyExtension extension = chosen.extend();
 
-    InlineSpan widgetSpan = extension.renderer!(
-      node,
-      next: nodeToWidget,
-      attributes: Attributes(),
-    );
+    InlineSpan widgetSpan = extension.renderer!(node,
+        extension: extension,
+        next: (dynamic child) => nodeToWidget(child, node),
+        attributes: Attributes(),
+        parentNode: parentNode);
 
     if (node['marks'] == null || node['marks'].isEmpty) return widgetSpan;
 
@@ -123,7 +123,7 @@ class TiptapRenderer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (schema != null && schema['content'] != null) {
-      return Text.rich(nodeToWidget(schema) ?? const TextSpan());
+      return Text.rich(nodeToWidget(schema, null) ?? const TextSpan());
     }
     return Container();
   }

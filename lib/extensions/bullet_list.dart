@@ -6,7 +6,7 @@ var BulletListExtension = Node(
     name: 'bulletList',
     group: "block list",
     content: "block list",
-    renderer: (node, {next, attributes, extension}) => WidgetSpan(
+    renderer: (node, {next, attributes, extension, parentNode}) => WidgetSpan(
         child: BulletListWidget(node, next: next, extension: extension)));
 
 class BulletListWidget extends TiptapBlockRenderer {
@@ -14,30 +14,36 @@ class BulletListWidget extends TiptapBlockRenderer {
 
   @override
   Widget build(BuildContext context) {
-    var top = extension?.data?["top"] ?? 3;
-    var bottom = extension?.data?["bottom"] ?? 3;
+    var top = extension?.data?["top"] ?? 6.0;
+    var bottom = extension?.data?["bottom"] ?? 6.0;
 
     return Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Column(
-            children: (node['content'] ?? [])
-                .map<Widget>((child) => Row(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: (node['content'] ?? [])
+            .map<Widget>((child) => Padding(
+                  padding: EdgeInsets.only(top: top, bottom: bottom),
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: [
                       Container(
-                        margin: EdgeInsets.only(
-                            right: 10.0, top: top, bottom: bottom),
-                        child: const Text(
-                          '\u2022',
-                          style: TextStyle(
-                            fontSize: 26,
-                          ),
+                        width: 6,
+                        height: 6,
+                        margin: const EdgeInsets.only(top: 8, right: 10),
+                        decoration: const BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.circle,
                         ),
                       ),
                       Expanded(
-                          child:
-                              Text.rich(next?.call(child) ?? const TextSpan()))
-                    ].toList()))
-                .toList()));
+                        child: Text.rich(next?.call(child) ?? const TextSpan()),
+                      ),
+                    ],
+                  ),
+                ))
+            .toList(),
+      ),
+    );
   }
 }

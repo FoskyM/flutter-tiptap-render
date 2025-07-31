@@ -4,7 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:tiptap_flutter/types/types.dart';
 
 typedef NodeRenderer = InlineSpan Function(dynamic node,
-    {dynamic next, Attributes? attributes});
+    {dynamic next,
+    Attributes? attributes,
+    AnyExtension? extension,
+    dynamic parentNode});
 typedef StyleAdder = TextStyle Function(dynamic node, MarkInstance mark);
 typedef CommandAdder = Map<String, Function> Function(
     dynamic node, dynamic mark);

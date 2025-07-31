@@ -6,7 +6,7 @@ var HeadingExtension = Node(
     name: "heading",
     content: "inline*",
     group: "block",
-    renderer: (node, {next, attributes, extension}) => WidgetSpan(
+    renderer: (node, {next, attributes, extension, parentNode}) => WidgetSpan(
         child: HeadingWidget(node, next: next, extension: extension)));
 
 const baseFontSize = 12.0;

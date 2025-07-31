@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
                     CodeExtension,
                     ImageExtension,
                     BulletListExtension..data = {"top": 0, "bottom": 0},
-                    OrderedListExtension..data = {"top": 4, "bottom": 4},
+                    OrderedListExtension..data = {"top": 0, "bottom": 0},
                     ListItemExtension,
                     HardBreakExtension,
                     BlockquoteExtension,

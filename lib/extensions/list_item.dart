@@ -7,7 +7,7 @@ var ListItemExtension = Node(
     name: 'listItem',
     group: "block list",
     content: "paragraph block*",
-    renderer: (node, {next, attributes, extension}) =>
+    renderer: (node, {next, attributes, extension, parentNode}) =>
         WidgetSpan(child: ListItemWidget(node, next: next)));
 
 class ListItemWidget extends TiptapBlockRenderer {

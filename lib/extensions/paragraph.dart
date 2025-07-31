@@ -7,9 +7,14 @@ var ParagraphExtension = Node(
     priority: 1000,
     group: "block",
     content: "inline*",
-    renderer: (node, {next, attributes, extension}) {
-      final top = extension?.data?["top"] ?? 8;
-      final bottom = extension?.data?["bottom"] ?? 8;
+    renderer: (node, {next, attributes, extension, parentNode}) {
+      var top = extension?.data?["top"] ?? 8;
+      var bottom = extension?.data?["bottom"] ?? 8;
+      if (parentNode != null && parentNode['type'] == 'listItem') {
+        top = 0;
+        bottom = 0;
+        print('listItem\'s child');
+      }
 
       return WidgetSpan(
           child: Container(
