@@ -56,6 +56,10 @@ class TiptapRenderer extends StatelessWidget {
         (extension) =>
             extension.nodeType == mark.type || extension.name == mark.type,
       );
+      if (markHandler != null) {
+        mark =
+            MarkInstance(item['type'], item['attrs'], extension: markHandler);
+      }
       return (mark: mark, handler: markHandler);
     }).where((item) {
       if (item.handler == null) {

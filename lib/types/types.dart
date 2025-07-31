@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../core/extension.dart';
+
 class NodeConfig<Options, Storage> {
   late String name;
   Storage? defaultStorage;
@@ -11,8 +13,9 @@ class NodeConfig<Options, Storage> {
 class MarkInstance {
   final String type;
   final dynamic attrs;
+  final AnyExtension? extension;
 
-  MarkInstance(this.type, this.attrs);
+  MarkInstance(this.type, this.attrs, {this.extension});
 }
 
 // Helper types for Rich Text Rendering

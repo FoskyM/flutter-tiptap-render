@@ -7,6 +7,7 @@ import 'package:tiptap_flutter/extensions/ordered_list.dart';
 import 'package:tiptap_flutter/extensions/blockquote.dart';
 import 'package:tiptap_flutter/extensions/subscript.dart';
 import 'package:tiptap_flutter/extensions/superscript.dart';
+import 'package:tiptap_flutter/extensions/highlight.dart';
 import 'package:tiptap_flutter/tiptap_flutter.dart';
 
 void main() => runApp(const MyApp());
@@ -49,6 +50,13 @@ class MyApp extends StatelessWidget {
                     BlockquoteExtension,
                     SuperscriptExtension,
                     SubscriptExtension,
+                    HighlightExtension
+                      ..data = {
+                        "colorAlias": {
+                          "var(--p-primary-500)": "#2191f3",
+                        },
+                        "defaultColor": Colors.blue
+                      },
                   ])),
             )),
             const Padding(

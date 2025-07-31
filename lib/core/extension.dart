@@ -25,7 +25,7 @@ class AnyExtension<Options, Storage> {
   final String? group;
   final bool? inline;
   // NodeConfig<Options, Storage> config;
-  final Map<String, dynamic>? data;
+  Map<String, dynamic>? data;
   final NodeRenderer? renderer;
   final StyleAdder? addStyle;
   final CommandAdder? addCommands;
