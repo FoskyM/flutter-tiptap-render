@@ -5,6 +5,8 @@ import 'package:tiptap_flutter/extensions/hard_break.dart';
 import 'package:tiptap_flutter/extensions/list_item.dart';
 import 'package:tiptap_flutter/extensions/ordered_list.dart';
 import 'package:tiptap_flutter/extensions/blockquote.dart';
+import 'package:tiptap_flutter/extensions/subscript.dart';
+import 'package:tiptap_flutter/extensions/superscript.dart';
 import 'package:tiptap_flutter/tiptap_flutter.dart';
 
 void main() => runApp(const MyApp());
@@ -45,6 +47,8 @@ class MyApp extends StatelessWidget {
                     ListItemExtension,
                     HardBreakExtension,
                     BlockquoteExtension,
+                    SuperscriptExtension,
+                    SubscriptExtension,
                   ])),
             )),
             const Padding(
