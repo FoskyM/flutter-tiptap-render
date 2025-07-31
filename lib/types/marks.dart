@@ -32,9 +32,10 @@ class MARKS {
   static const UNDERLINE = MARKS._internal('UNDERLINE', 'underline');
   static const STRIKE = MARKS._internal('STRIKE', 'strike');
   static const LINK = MARKS._internal("LINK", "link");
+  static const CODE = MARKS._internal("CODE", "code");
 
   // Helpers
-  static List<MARKS> get items => [BOLD, ITALIC, UNDERLINE, STRIKE, LINK];
+  static List<MARKS> get items => [BOLD, ITALIC, UNDERLINE, STRIKE, LINK, CODE];
   static MARKS? fromKey(String key) =>
       items.firstWhereOrNull((item) => item.key == key);
 
@@ -51,7 +52,11 @@ class MARKS {
     MARKS.LINK.value: const TextStyle(
         color: Colors.blueAccent,
         decoration: TextDecoration.underline,
-        decorationColor: Colors.blueAccent)
+        decorationColor: Colors.blueAccent),
+    MARKS.CODE.value: const TextStyle(
+      backgroundColor: Color(0xFFE0E0E0),
+      fontFamily: 'monospace',
+    ),
   });
 
   static TextStyle getMarksTextStyles(

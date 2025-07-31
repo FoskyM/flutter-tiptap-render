@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
                     UnderlineExtension,
                     StrikeExtension,
                     LinkExtension,
+                    CodeExtension,
                     ImageExtension,
                     BulletListExtension,
                     OrderedListExtension,

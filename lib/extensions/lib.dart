@@ -9,3 +9,4 @@ export "package:tiptap_flutter/extensions/paragraph.dart";
 export "package:tiptap_flutter/extensions/text.dart";
 export "package:tiptap_flutter/extensions/underline.dart";
 export "package:tiptap_flutter/extensions/strike.dart";
+export "package:tiptap_flutter/extensions/code.dart";
