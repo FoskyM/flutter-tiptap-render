@@ -21,13 +21,18 @@ class TiptapRenderer extends StatelessWidget {
     Extensions newExtensions = [];
     newExtensions.addAll(extensions ?? []);
     this.extensions = ExtensionsManager.sort(newExtensions);
+    if (kDebugMode) {
+      this.extensions.toList().forEach((item) {
+        print("Registered extension, type: ${item.nodeType}, name: ${item.name}");
+      });
+    }
   }
 
   /// nodeToWidget handles converting a node into a Widget, as well as handling
   /// any custom logic needed to accommodate different node types
   InlineSpan? nodeToWidget(dynamic node) {
     AnyExtension? chosen = extensions
-        .firstWhereOrNull((extension) => extension.nodeType == node['type']);
+        .firstWhereOrNull((extension) => extension.nodeType == node['type'] || extension.name == node['type']);
 
     if (chosen == null) {
       if (kDebugMode) print("Unhandled node type: ${node['type']}");
