@@ -30,10 +30,11 @@ class MARKS {
   static const BOLD = MARKS._internal('BOLD', 'bold');
   static const ITALIC = MARKS._internal('ITALIC', 'italic');
   static const UNDERLINE = MARKS._internal('UNDERLINE', 'underline');
+  static const STRIKE = MARKS._internal('STRIKE', 'strike');
   static const LINK = MARKS._internal("LINK", "link");
 
   // Helpers
-  static List<MARKS> get items => [BOLD, ITALIC, UNDERLINE, LINK];
+  static List<MARKS> get items => [BOLD, ITALIC, UNDERLINE, STRIKE, LINK];
   static MARKS? fromKey(String key) =>
       items.firstWhereOrNull((item) => item.key == key);
 
@@ -46,6 +47,7 @@ class MARKS {
     MARKS.ITALIC.value: const TextStyle(fontStyle: FontStyle.italic),
     MARKS.UNDERLINE.value:
         const TextStyle(decoration: TextDecoration.underline),
+    MARKS.STRIKE.value: const TextStyle(decoration: TextDecoration.lineThrough),
     MARKS.LINK.value: const TextStyle(
         color: Colors.blueAccent,
         decoration: TextDecoration.underline,

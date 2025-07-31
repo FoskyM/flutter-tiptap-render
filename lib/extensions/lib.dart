@@ -8,3 +8,4 @@ export "package:tiptap_flutter/extensions/link.dart";
 export "package:tiptap_flutter/extensions/paragraph.dart";
 export "package:tiptap_flutter/extensions/text.dart";
 export "package:tiptap_flutter/extensions/underline.dart";
+export "package:tiptap_flutter/extensions/strike.dart";

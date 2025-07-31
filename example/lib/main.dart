@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
                     ItalicExtension,
                     BoldExtension,
                     UnderlineExtension,
+                    StrikeExtension,
                     LinkExtension,
                     ImageExtension,
                     BulletListExtension,
