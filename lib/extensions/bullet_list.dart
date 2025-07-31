@@ -14,8 +14,8 @@ class BulletListWidget extends TiptapBlockRenderer {
 
   @override
   Widget build(BuildContext context) {
-    var top = extension?.data?["top"] ?? 6.0;
-    var bottom = extension?.data?["bottom"] ?? 6.0;
+    double top = extension?.data?["top"] ?? 6.0;
+    double bottom = extension?.data?["bottom"] ?? 6.0;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),

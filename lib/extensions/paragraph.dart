@@ -8,11 +8,11 @@ var ParagraphExtension = Node(
     group: "block",
     content: "inline*",
     renderer: (node, {next, attributes, extension, parentNode}) {
-      var top = extension?.data?["top"] ?? 8;
-      var bottom = extension?.data?["bottom"] ?? 8;
+      double top = extension?.data?["top"] ?? 8.0;
+      double bottom = extension?.data?["bottom"] ?? 8.0;
       if (parentNode != null && parentNode['type'] == 'listItem') {
-        top = 0;
-        bottom = 0;
+        top = 0.0;
+        bottom = 0.0;
         print('listItem\'s child');
       }
 

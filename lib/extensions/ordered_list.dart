@@ -15,8 +15,8 @@ class OrderedListWidget extends TiptapBlockRenderer {
 
   @override
   Widget build(BuildContext context) {
-    var top = extension?.data?["top"] ?? 8;
-    var bottom = extension?.data?["bottom"] ?? 8;
+    double top = extension?.data?["top"] ?? 8.0;
+    double bottom = extension?.data?["bottom"] ?? 8.0;
 
     return Padding(
         padding: const EdgeInsets.all(5.0),

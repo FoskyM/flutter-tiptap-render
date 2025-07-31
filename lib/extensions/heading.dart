@@ -26,8 +26,8 @@ class HeadingWidget extends TiptapBlockRenderer {
   @override
   Widget build(BuildContext context) {
     var level = node['attrs']['level'] ?? 1;
-    var top = extension?.data?['top'] ?? (defaultHeadingSizes[level]! / 2.0);
-    var bottom = extension?.data?['bottom'] ?? 1;
+    double top = extension?.data?['top'] ?? (defaultHeadingSizes[level]! / 2.0);
+    double bottom = extension?.data?['bottom'] ?? 1.0;
     return Container(
         margin: EdgeInsets.only(top: top, bottom: bottom),
         child: Text.rich(
