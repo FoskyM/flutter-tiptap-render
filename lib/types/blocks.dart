@@ -30,7 +30,7 @@ class BLOCKS {
   static const UL_LIST = BLOCKS._internal('UL_LIST', 'unordered-list');
   static const LIST_ITEM = BLOCKS._internal('LIST_ITEM', 'list-item');
   static const HR = BLOCKS._internal('HR', 'hr');
-  static const QUOTE = BLOCKS._internal('QUOTE', 'blockquote');
+  static const BLOCKQUOTE = BLOCKS._internal('BLOCKQUOTE', 'blockquote');
   static const EMBEDDED_ENTRY =
       const BLOCKS._internal('EMBEDDED_ENTRY', 'embedded-entry-block');
   static const EMBEDDED_ASSET =
@@ -45,7 +45,7 @@ class BLOCKS {
         UL_LIST,
         LIST_ITEM,
         HR,
-        QUOTE,
+        BLOCKQUOTE,
         EMBEDDED_ENTRY,
         EMBEDDED_ASSET,
       ];
