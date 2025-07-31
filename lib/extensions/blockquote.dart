@@ -1,25 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tiptap_flutter/core/node.dart';
-import 'package:tiptap_flutter/extensions/extensions.dart';
 
 var BlockquoteExtension = Node(
   name: "blockquote",
   group: "block",
   content: "block+",
-  renderer: (node, {next, attributes}) =>
-      WidgetSpan(child: BlockquoteWidget(node)),
-);
-
-class BlockquoteWidget extends TiptapBlockRenderer {
-  const BlockquoteWidget(
-    super.node, {
-    super.key,
-    super.next,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
+  renderer: (node, {next, attributes}) => WidgetSpan(
+    child: Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: const BoxDecoration(
@@ -44,6 +31,6 @@ class BlockquoteWidget extends TiptapBlockRenderer {
           }
         }).toList(),
       ),
-    );
-  }
-}
+    ),
+  ),
+);
