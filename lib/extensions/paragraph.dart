@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/core/node.dart';
+import 'package:flutter_tiptap_render/core/node.dart';
 
 var ParagraphExtension = Node(
     name: "paragraph",

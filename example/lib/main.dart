@@ -1,14 +1,14 @@
 import 'package:example/tiptap_data.dart';
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/extensions/bullet_list.dart';
-import 'package:tiptap_flutter/extensions/hard_break.dart';
-import 'package:tiptap_flutter/extensions/list_item.dart';
-import 'package:tiptap_flutter/extensions/ordered_list.dart';
-import 'package:tiptap_flutter/extensions/blockquote.dart';
-import 'package:tiptap_flutter/extensions/subscript.dart';
-import 'package:tiptap_flutter/extensions/superscript.dart';
-import 'package:tiptap_flutter/extensions/highlight.dart';
-import 'package:tiptap_flutter/tiptap_flutter.dart';
+import 'package:flutter_tiptap_render/extensions/bullet_list.dart';
+import 'package:flutter_tiptap_render/extensions/hard_break.dart';
+import 'package:flutter_tiptap_render/extensions/list_item.dart';
+import 'package:flutter_tiptap_render/extensions/ordered_list.dart';
+import 'package:flutter_tiptap_render/extensions/blockquote.dart';
+import 'package:flutter_tiptap_render/extensions/subscript.dart';
+import 'package:flutter_tiptap_render/extensions/superscript.dart';
+import 'package:flutter_tiptap_render/extensions/highlight.dart';
+import 'package:flutter_tiptap_render/flutter_tiptap_render.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tiptap Parser Demo',
+      title: 'Tiptap Renderer Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Tiptap Parser Demo'),
+          title: const Text('Tiptap Renderer Demo'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

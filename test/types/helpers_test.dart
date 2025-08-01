@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tiptap_flutter/types/helpers.dart';
+import 'package:flutter_tiptap_render/types/helpers.dart';
 
 void main() {
   final inlineNode = {'type': 'entry-hyperlink'};

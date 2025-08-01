@@ -1,14 +1,14 @@
-library tiptap_flutter;
+library flutter_tiptap_render;
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/core/extension.dart';
-import 'package:tiptap_flutter/core/extensions_manager.dart';
-import 'package:tiptap_flutter/types/types.dart';
+import 'package:flutter_tiptap_render/core/extension.dart';
+import 'package:flutter_tiptap_render/core/extensions_manager.dart';
+import 'package:flutter_tiptap_render/types/types.dart';
 
-export "package:tiptap_flutter/extensions/lib.dart";
+export "package:flutter_tiptap_render/extensions/lib.dart";
 
 /// This is the main entry point for Tiptap. To render
 /// Flutter widgets, in your app instantiate Tiptap with

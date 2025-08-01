@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/core/mark.dart';
+import 'package:flutter_tiptap_render/core/mark.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 var LinkExtension = Mark(

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/core/node.dart';
-import 'package:tiptap_flutter/extensions/extensions.dart';
+import 'package:flutter_tiptap_render/core/node.dart';
+import 'package:flutter_tiptap_render/extensions/extensions.dart';
 
 var OrderedListExtension = Node(
     name: 'orderedList',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/core/mark.dart';
+import 'package:flutter_tiptap_render/core/mark.dart';
 
 var ItalicExtension = Mark(
     name: "italic",

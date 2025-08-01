@@ -1,5 +1,5 @@
-import 'package:tiptap_flutter/types/blocks.dart';
-import 'package:tiptap_flutter/types/inlines.dart';
+import 'package:flutter_tiptap_render/types/blocks.dart';
+import 'package:flutter_tiptap_render/types/inlines.dart';
 
 class Helpers {
   /// Checks if the node is an instance of Inline

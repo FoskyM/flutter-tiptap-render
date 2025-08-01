@@ -1,7 +1,7 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tiptap_flutter/types/types.dart';
+import 'package:flutter_tiptap_render/types/types.dart';
 
 typedef NodeRenderer = InlineSpan Function(dynamic node,
     {dynamic next,

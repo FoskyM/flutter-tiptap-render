@@ -1,4 +1,4 @@
-import 'package:tiptap_flutter/core/extension.dart';
+import 'package:flutter_tiptap_render/core/extension.dart';
 
 class ExtensionsManager {
   static Extensions sort(Extensions extensions) {

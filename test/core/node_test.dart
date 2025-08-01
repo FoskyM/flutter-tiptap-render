@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tiptap_flutter/tiptap_flutter.dart';
+import 'package:flutter_tiptap_render/flutter_tiptap_render.dart';
 
 void main() {
   test('can parse text from paragraph', () {

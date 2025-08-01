@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tiptap_flutter/core/extension.dart';
-import 'package:tiptap_flutter/tiptap_flutter.dart';
+import 'package:flutter_tiptap_render/core/extension.dart';
+import 'package:flutter_tiptap_render/flutter_tiptap_render.dart';
 
 import 'sample_json.dart';
 

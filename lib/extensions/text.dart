@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/core/node.dart';
+import 'package:flutter_tiptap_render/core/node.dart';
 
 var TextExtension = Node(
     name: "text",
