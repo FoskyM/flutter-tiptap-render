@@ -1,10 +1,16 @@
-# Tiptap Flutter
+# Flutter Tiptap Render
+
+This project is a heavily modified version of the original, with additional extensions and architectural changes, which is based on work by Federico Varano (2024), licensed under the MIT License.
+
+Original: [fvarano/tiptap-flutter](https://github.com/fvarano/tiptap-flutter)
 
 ## Features
+
 - Parse JSON data to Flutter widgets
 - Customizable extensions
 
 ### Built in extensions
+
 - DocumentExtension
 - ParagraphExtension
 - HeadingExtension
@@ -12,25 +18,39 @@
 - BoldExtension
 - ItalicExtension
 - UnderlineExtension
+- StrikeExtension
 - LinkExtension
+- CodeExtension (inline-code)
 - ImageExtension
+- BulletListExtension
+- OrderedListExtension
+- ListItemExtension
+- HardBreakExtension
+- BlockquoteExtension
+- SuperscriptExtension
+- SubscriptExtension
+- HighlightExtension
+- HorizontalRuleExtension
 
 ## Getting started
+
 Add the package to your `pubspec.yaml` file.
+
 ```yaml
 dependencies:
-  tiptap_flutter:
+  flutter_tiptap_render:
     git:
-      url: https://github.com/fvarano/tiptap-flutter.git
+      url: https://github.com/FoskyM/flutter_tiptap_render.git
       ref: main # branch name
 ```
 
 ## Usage
+
 Full example in the `/example` folder.
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:tiptap_flutter/tiptap_flutter.dart';
+import 'package:flutter_tiptap_render/flutter_tiptap_render.dart';
 
 void main() => runApp(const MyApp());
 
@@ -79,10 +99,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tiptap Parser Demo',
+      title: 'Tiptap Renderer Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Tiptap Parser Demo'),
+          title: const Text('Tiptap Renderer Demo'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -93,11 +113,29 @@ class MyApp extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TiptapRenderer(jsonData, extensions: [
-                        DocumentExtension,
-                        ParagraphExtension,
-                        HeadingExtension,
-                        TextExtension,
-                        BoldExtension,
+                          DocumentExtension,
+                          ParagraphExtension..data = {"top": 4.0, "bottom": 4.0},
+                          HeadingExtension..data = {"top": 4.0},
+                          TextExtension,
+                          ItalicExtension,
+                          BoldExtension,
+                          UnderlineExtension,
+                          StrikeExtension,
+                          LinkExtension,
+                          CodeExtension,
+                          ImageExtension,
+                          BulletListExtension..data = {"top": 0.0, "bottom": 0.0},
+                          OrderedListExtension..data = {"top": 0.0, "bottom": 0.0},
+                          ListItemExtension,
+                          HardBreakExtension,
+                          BlockquoteExtension,
+                          SuperscriptExtension,
+                          SubscriptExtension,
+                          HighlightExtension
+                            ..data = {
+                              "colorAlias": {"var(--p-primary-500)": "#2191f3"},
+                              "defaultColor": Theme.of(context).primaryColor,
+                            },
                       ])),
                 )),
           ],
@@ -107,6 +145,3 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
-
-## Additional information
-TODO
